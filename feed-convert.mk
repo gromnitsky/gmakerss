@@ -10,7 +10,7 @@ bin := $(src)/node_modules/.bin
 
 mbox.out := rss
 mbox = $(bin)/rss2mail --history history.txt >> $(mbox.out)/$(.name)
-rnews = $(bin)/rss2mail --rnews $(.name) --history history.txt | sudo -u news rnews -N
+rnews = $(bin)/rss2mail --rnews $(.name) | sudo -u news rnews -N
 
 %:
 	$(props_parse_init)
