@@ -12,6 +12,7 @@ let xargs_escape = o => se(':' + JSON.stringify(o))
 let parser = new ini.IniReader({multiValue: 1})
 parser.load(process.argv[2])
 Object.entries(parser.getBlock()).forEach( ([k,v]) => {
+    if (process.argv[3] && !k.match(process.argv[3])) return
     if (!v.url) return
     let urls = Array.isArray(v.url) ? v.url : [v.url]
     delete v.url

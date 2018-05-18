@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+SHELL := bash
+.SHELLFLAGS := -c -o pipefail
+src := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+include $(src)/u.mk
+
+s := rss.ini
+j := 4
+
+.PHONY: run
+run: $(s)
+	@node $(src)/ini-parse.js $< $(call se,$(g)) | xargs $(MAKE) --no-print-directory -f $(src)/feed-convert.mk -k -j$(j)

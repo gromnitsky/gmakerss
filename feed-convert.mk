@@ -1,7 +1,6 @@
 src := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 include $(src)/u.mk
 
-g := .
 mode := mbox
 
 opt = $(or $($1),$(.$1),$2)
@@ -17,6 +16,5 @@ rnews = $(bin)/rss2mail --rnews $(.name) --history history.txt | sudo -u news rn
 	$(props_parse_init)
 	$(call props_parse,$*)
 
-	@echo $(.name) | grep -qsiE $(call se,$(g))
 	$(if $(call eq,$(mode),mbox),@mkdir -p $(mbox.out))
 	curl -sfL --connect-timeout 15 -m 120 $(call se,$(.url)) $(call opt,curl.opt) | $(bin)/grepfeed -x $(call opt,grepfeed) | $($(mode))
