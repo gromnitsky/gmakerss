@@ -4,13 +4,14 @@ include $(src)/u.mk
 mode := mbox
 
 opt = $(or $($1),$(.$1),$2)
+from = $(if $(.from),-f $(call se,$(.from)))
 SHELL := bash
 .SHELLFLAGS := -c -o pipefail
 bin := $(src)/node_modules/.bin
 
 mbox.out := rss
-mbox = $(bin)/rss2mail --history history.txt >> $(mbox.out)/$(.name)
-rnews = $(bin)/rss2mail --rnews $(.name) | sudo -u news rnews -N
+mbox = $(bin)/rss2mail $(from) --history history.txt >> $(mbox.out)/$(.dest)
+rnews = $(bin)/rss2mail $(from) --rnews $(.dest) | sudo -u news rnews -N
 
 %:
 	$(props_parse_init)

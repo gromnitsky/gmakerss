@@ -3,7 +3,7 @@ define newline :=
 
 
 endef
-props_def := :{".name":"" , ".url":"" , ".curl.opt":"" , ".grepfeed":""}
+props_def := :{".url":"" , ".dest":"" , ".from":"" , ".curl.opt":"" , ".grepfeed":""}
 
 props_parse = $(eval $(subst $(separator),$(newline),$(shell node -e 'process.stdout.write(Object.entries(JSON.parse(process.argv[1].slice(1))).map( ([k,v]) => `$${k}:=$${v}`).join("$(separator)"))' $(call se,$1) )))
 props_parse_init = $(call props_parse,$(props_def))

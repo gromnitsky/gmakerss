@@ -3,20 +3,16 @@ let ini = require('inireader')
 let norm = s => s.replace(/[^\w.,/-]/g, '_')
 let props = hash => {
     return Object.entries(hash).map( ([k,v]) => {
-	return {['.'+norm(k)]: Array.isArray(v) ? v.join(' ') : v}
+	return {['.'+norm(k)]: k === 'dest' ? norm(v) : v}
     })
 }
 let se = s => "'" + s.replace(/'/g, "'\\''") + "'"
 let xargs_escape = o => se(':' + JSON.stringify(o))
 
-let parser = new ini.IniReader({multiValue: 1})
+let parser = new ini.IniReader()
 parser.load(process.argv[2])
 Object.entries(parser.getBlock()).forEach( ([k,v]) => {
-    if (process.argv[3] && !k.match(process.argv[3])) return
-    if (!v.url) return
-    let urls = Array.isArray(v.url) ? v.url : [v.url]
-    delete v.url
-    urls.forEach( url => {
-	process.stdout.write(xargs_escape(Object.assign({'.name': norm(k)}, ...props(v), {'.url': url})) + "\n")
-    })
+    if (!v.dest) throw new Error(`'${k}' hash no 'dest' prop!`)
+    if (process.argv[3] && !v.dest.match(process.argv[3])) return // g= opt
+    process.stdout.write(xargs_escape(Object.assign({'.url': k}, ...props(v))) + "\n")
 })
