@@ -1,16 +1,15 @@
 {
-  "name": "gmakerss",
-  "version": "0.0.1",
-  "description": "An rss reader",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "AG",
-  "license": "MIT",
-  "dependencies": {
-    "grepfeed": "file:../../../alex/grepfeed",
-    "inireader": "^1.2.1",
-    "rss2mail": "file:../../../alex/rss2mail"
-  }
+    "name": "gmakerss",
+    "private": true,
+    "version": "0.0.1",
+    "description": "Post/convert rss feeds to nntp servers or mbox files",
+    "author": "Alexander Gromnitsky",
+    "repository": "github:gromnitsky/gmakerss",
+    "license": "MIT",
+    "bin": "gmakerss",
+    "dependencies": {
+        "grepfeed": "~1.2.2",
+        "inireader": "~1.2.1",
+        "rss2mail": "~0.0.2"
+    }
 }
