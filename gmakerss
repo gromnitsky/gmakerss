@@ -12,3 +12,33 @@ run: .feeds
 .PHONY: .feeds
 .feeds: $(s)
 	node $(src)/ini-parse.js $< $(call se,$(g)) > $@
+
+define help :=
+CL options (the values are examples, not defaults):
+
+s=file.ini
+    a list of your subscriptions
+mode=rnews
+    use rnews(1) to post emails to a local nntp server
+j=8
+    a number of parallel jobs
+f=1
+    repost old emails (makes no sense for mode=rnews); useful w/ g=
+g=ruby
+    grab only enclosures matching 'dest' in .ini
+
+CL & .ini:
+
+grepfeed=-n2 -c news -v
+    pass options to the included copy of grepfeed (-x is implied);
+    see https://github.com/gromnitsky/grepfeed
+from=Bob <bob@example.com>
+    a custom 'From' header
+curl.opt=-s
+    pass additional opts to curl
+dest=comp.javascript
+    a newsgroup/mbox-file name
+endef
+
+.PHONY: help
+help:; $(info $(help))@:
