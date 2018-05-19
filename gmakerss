@@ -23,9 +23,10 @@ mode=rnews
 j=8
     a number of parallel jobs
 f=1
-    repost old emails (makes no sense for mode=rnews); useful w/ g=
+    repost old emails (makes little sense for mode=rnews); useful w/ g=
 g=ruby
-    grab only enclosures matching 'dest' in .ini
+    grab only enclosures matching 'dest' in .ini;
+    if a pattern begins w/ 'url:' the matching is done against the section name
 
 CL & .ini:
 
