@@ -10,7 +10,7 @@ SHELL := bash
 bin := $(src)/node_modules/.bin
 
 mbox.out := rss
-mbox = $(bin)/rss2mail $(from) $(if $(f),,--history history.txt) >> $(mbox.out)/$(.dest)
+mbox = $(bin)/rss2mail $(from) $(if $(f),,--history history.txt) -o $(mbox.out)/$(.dest)
 rnews = $(bin)/rss2mail $(from) --rnews $(.dest) | sudo -u news rnews -N
 
 %:

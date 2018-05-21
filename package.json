@@ -10,6 +10,6 @@
     "dependencies": {
         "grepfeed": "~1.2.2",
         "inireader": "~1.2.1",
-        "rss2mail": "~0.0.2"
+        "rss2mail": "~0.0.3"
     }
 }
