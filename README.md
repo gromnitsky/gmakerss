@@ -8,7 +8,7 @@ in JS instead of Ruby.
 
 ## Setup
 
-Requires GNU Make 4+, curl, node 10.x.
+Requires GNU Make 4+, curl, node 18.x.
 
 Clone the repo, type `npm i` inside its dir.
 
@@ -59,7 +59,7 @@ For help, type `gmakerss help`.
 
 ## Bugs
 
-* tested on Fedora 28 only
+* tested on Fedora only
 
 ## License
 
