@@ -8,8 +8,8 @@
     "license": "MIT",
     "bin": "gmakerss",
     "dependencies": {
-        "grepfeed": "~2.0.0",
+        "grepfeed": "~3.0.0",
         "inireader": "1.2.1",
-        "rss2mail": "~1.0.1"
+        "rss2mail": "~1.1.0"
     }
 }
