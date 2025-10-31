@@ -8,7 +8,7 @@ in JS instead of Ruby.
 
 ## Setup
 
-Requires GNU Make 4+, curl, node 18.x.
+Requires GNU Make 4+, curl, [flock(1)][], node 22.
 
 Clone the repo, type `npm i` inside its dir.
 
@@ -64,3 +64,5 @@ For help, type `gmakerss help`.
 ## License
 
 MIT
+
+[flock(1)]: https://manpages.debian.org/unstable/util-linux/flock.1.en.html
